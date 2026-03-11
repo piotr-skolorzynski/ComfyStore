@@ -1,7 +1,7 @@
 import React from "react";
 
 const Landing: React.FC = () => {
-  return <div>{/* Empty component */}</div>;
+  return <div>Landing</div>;
 };
 
 export default Landing;
