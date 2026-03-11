@@ -1,7 +1,7 @@
 import React from "react";
 
 const Register: React.FC = () => {
-  return <div>{/* Empty component */}</div>;
+  return <div>Register</div>;
 };
 
 export default Register;

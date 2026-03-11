@@ -1,23 +1,10 @@
-import {
-  About,
-  Cart,
-  Checkout,
-  Error,
-  HomeLayout,
-  Landing,
-  Login,
-  Orders,
-  Products,
-  Register,
-  SingleProduct,
-} from "./pages";
+import { createBrowserRouter, RouterProvider } from "react-router";
+import { routes } from "./routes/routes";
+
+const router = createBrowserRouter(routes);
 
 const App = () => {
-  return (
-    <>
-      <About />
-    </>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;

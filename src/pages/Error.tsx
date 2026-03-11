@@ -1,7 +1,7 @@
 import React from "react";
 
 const Error: React.FC = () => {
-  return <div>{/* Empty component */}</div>;
+  return <div>Error page</div>;
 };
 
 export default Error;
