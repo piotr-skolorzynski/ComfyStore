@@ -1,14 +1,14 @@
 interface IFormInputProps {
   label: string;
   name: string;
-  defaultValue: string;
-  type: string;
+  defaultValue?: string;
+  type?: string;
 }
 
 const FormInput = ({
   label,
   name,
-  defaultValue,
+  defaultValue = "value",
   type = "text",
 }: IFormInputProps) => {
   return (
