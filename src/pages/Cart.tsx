@@ -1,6 +1,6 @@
-import React from "react";
+import { type FunctionComponent } from "react";
 
-const Cart: React.FC = () => {
+const Cart: FunctionComponent = () => {
   return <div>{/* Empty component */}</div>;
 };
 

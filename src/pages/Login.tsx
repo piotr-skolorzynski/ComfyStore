@@ -1,4 +1,5 @@
 import React from "react";
+import { FormInput } from "../components";
 
 const Login: React.FC = () => {
   return <div>Login</div>;
