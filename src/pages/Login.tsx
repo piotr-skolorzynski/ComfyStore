@@ -27,7 +27,7 @@ const Login = () => {
         <div className="mt-4">
           <SubmitBtn text="login" />
 
-          <button type="button" className="btn btn-secondary">
+          <button type="button" className="btn btn-secondary btn-block my-3">
             guest user
           </button>
 
