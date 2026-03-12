@@ -1,4 +1,4 @@
-import { Hero } from "../components";
+import { FeaturedProducts, Hero } from "../components";
 import { customFetch } from "../utils";
 
 export interface IProductAttributes {
@@ -34,6 +34,8 @@ const Landing = () => {
   return (
     <>
       <Hero />
+
+      <FeaturedProducts />
     </>
   );
 };
