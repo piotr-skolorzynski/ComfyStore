@@ -12,6 +12,13 @@ import {
   Register,
   SingleProduct,
 } from "../pages";
+import { ErrorElement } from "../components";
+
+// loaders
+
+import { loader as landingLoader } from "../pages/Landing";
+
+//actions
 
 export const routes = [
   {
@@ -22,6 +29,8 @@ export const routes = [
       {
         index: true,
         Component: Landing,
+        ErrorBoundary: ErrorElement,
+        loader: landingLoader,
       },
       {
         path: "products",
