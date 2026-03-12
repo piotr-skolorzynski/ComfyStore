@@ -1,7 +1,11 @@
-import React from "react";
+import { Hero } from "../components";
 
-const Landing: React.FC = () => {
-  return <div>Landing</div>;
+const Landing = () => {
+  return (
+    <>
+      <Hero />
+    </>
+  );
 };
 
 export default Landing;
