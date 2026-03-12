@@ -13,10 +13,8 @@ import {
   SingleProduct,
 } from "../pages";
 import { ErrorElement } from "../components";
-
 // loaders
-
-import { loader as landingLoader } from "../pages/Landing";
+import { productsLoader, singleProductLoader } from "../loaders";
 
 //actions
 
@@ -30,7 +28,7 @@ export const routes = [
         index: true,
         Component: Landing,
         ErrorBoundary: ErrorElement,
-        loader: landingLoader,
+        loader: productsLoader,
       },
       {
         path: "products",
@@ -39,6 +37,8 @@ export const routes = [
       {
         path: "products/:id",
         Component: SingleProduct,
+        ErrorBoundary: ErrorElement,
+        loader: singleProductLoader,
       },
       {
         path: "about",

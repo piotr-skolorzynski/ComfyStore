@@ -1,11 +1,9 @@
 import { Link, useLoaderData } from "react-router";
-import type { IProduct } from "../pages/Landing";
 import { formatPrice } from "../utils";
+import type { IProduct } from "../models";
 
 const ProductsGrid = () => {
-  const { products } = useLoaderData();
-
-  console.log(products);
+  const { products } = useLoaderData<{ products: IProduct[] }>();
 
   return (
     <div className="pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
