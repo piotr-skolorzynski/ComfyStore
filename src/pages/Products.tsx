@@ -1,7 +1,13 @@
-import React from "react";
+import { Filters, PaginationContainer, ProductsContainer } from "../components";
 
-const Products: React.FC = () => {
-  return <div>{/* Empty component */}</div>;
+const Products = () => {
+  return (
+    <>
+      <Filters />
+      <ProductsContainer />
+      <PaginationContainer />
+    </>
+  );
 };
 
 export default Products;

@@ -14,7 +14,11 @@ import {
 } from "../pages";
 import { ErrorElement } from "../components";
 // loaders
-import { featuredProductsLoader, singleProductLoader } from "../loaders";
+import {
+  featuredProductsLoader,
+  productsLoader,
+  singleProductLoader,
+} from "../loaders";
 
 //actions
 
@@ -33,6 +37,8 @@ export const routes = [
       {
         path: "products",
         Component: Products,
+        ErrorBoundary: ErrorElement,
+        loader: productsLoader,
       },
       {
         path: "products/:id",
