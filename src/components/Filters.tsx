@@ -2,6 +2,7 @@ import { Form, Link, useLoaderData } from "react-router";
 import FormInput from "./FormInput";
 import FormSelect from "./FormSelect";
 import type { IProductsMetaData } from "../models";
+import FormRange from "./FormRange";
 
 const Filters = () => {
   const { meta } = useLoaderData() as { meta: IProductsMetaData };
@@ -30,6 +31,8 @@ const Filters = () => {
         name="order"
         options={["a-z", "z-a", "high", "low"]}
       />
+
+      <FormRange label="select price" name="price" />
 
       <button type="submit" className="btn btn-primary btn-sm">
         search
