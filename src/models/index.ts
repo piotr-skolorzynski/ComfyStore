@@ -1,3 +1,4 @@
+export type { FormCheckboxSize } from "./form-checkbox-size.model";
 export type { FormInputSize } from "./form-input-size.model";
 export type { FormRangeSize } from "./form-range-size.model";
 export type { FormSelectSize } from "./form-select-size.model";

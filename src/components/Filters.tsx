@@ -3,6 +3,7 @@ import FormInput from "./FormInput";
 import FormSelect from "./FormSelect";
 import type { IProductsMetaData } from "../models";
 import FormRange from "./FormRange";
+import FormCheckbox from "./FormCheckbox";
 
 const Filters = () => {
   const { meta } = useLoaderData() as { meta: IProductsMetaData };
@@ -33,6 +34,8 @@ const Filters = () => {
       />
 
       <FormRange label="select price" name="price" />
+
+      <FormCheckbox label="free shipping" name="shipping" />
 
       <button type="submit" className="btn btn-primary btn-sm">
         search
