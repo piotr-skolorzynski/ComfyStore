@@ -1,6 +1,9 @@
+import type { FormInputSize } from "../models";
+
 interface IFormInputProps {
   label: string;
   name: string;
+  size?: FormInputSize;
   defaultValue?: string;
   type?: string;
 }
@@ -8,15 +11,16 @@ interface IFormInputProps {
 const FormInput = ({
   label,
   name,
+  size = "input-lg",
   defaultValue = "value",
   type = "text",
 }: IFormInputProps) => {
   return (
     <fieldset className="fieldset">
-      <legend className="fieldset-legend">{label}</legend>
+      <legend className="fieldset-legend capitalize">{label}</legend>
       <input
         type={type}
-        className="input"
+        className={`input ${size}`}
         defaultValue={defaultValue}
         name={name}
       />

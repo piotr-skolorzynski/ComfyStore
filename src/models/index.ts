@@ -1,3 +1,5 @@
+export type { FormInputSize } from "./form-input-size.model";
+export type { FormSelectSize } from "./form-select-size.model";
 export type { IPagination } from "./pagination.interface";
 export type { IProduct } from "./product.interface";
 export type { IProductAttributes } from "./product-attributes.interface";
