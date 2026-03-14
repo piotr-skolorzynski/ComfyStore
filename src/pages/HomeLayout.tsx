@@ -7,9 +7,7 @@ const HomeLayout = () => {
   return (
     <>
       <Header />
-
       <Navbar />
-
       {isPageLoading ? (
         <Loading />
       ) : (

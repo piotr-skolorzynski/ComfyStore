@@ -5,13 +5,19 @@ import { formatPrice } from "../utils";
 interface IFormRangeProps {
   label: string;
   name: string;
+  price: number;
   size?: FormRangeSize;
 }
 
-const FormRange = ({ label, name, size = "range-sm" }: IFormRangeProps) => {
+const FormRange = ({
+  label,
+  name,
+  price,
+  size = "range-sm",
+}: IFormRangeProps) => {
   const step = 1000;
   const maxPrice = 100_000;
-  const [selectedPrice, setSelectedPrice] = useState(maxPrice);
+  const [selectedPrice, setSelectedPrice] = useState(price || maxPrice);
 
   return (
     <div>

@@ -12,7 +12,7 @@ const FormInput = ({
   label,
   name,
   size = "input-lg",
-  defaultValue = "value",
+  defaultValue,
   type = "text",
 }: IFormInputProps) => {
   return (

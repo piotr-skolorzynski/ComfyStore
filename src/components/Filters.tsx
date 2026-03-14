@@ -6,7 +6,13 @@ import FormRange from "./FormRange";
 import FormCheckbox from "./FormCheckbox";
 
 const Filters = () => {
-  const { meta } = useLoaderData() as { meta: IProductsMetaData };
+  const { meta, params } = useLoaderData() as {
+    meta: IProductsMetaData;
+    params: { [key: string]: string };
+  };
+  console.log(params);
+  const { search, company, category, shipping, order, price } = params;
+
   const comapnies = meta.companies;
   const categories = meta.categories;
 
@@ -17,30 +23,42 @@ const Filters = () => {
         label="search product"
         name="search"
         size="input-sm"
+        defaultValue={search as string}
       />
 
       <FormSelect
         label="select category"
         name="category"
         options={categories}
+        defaultValue={category as string}
       />
 
-      <FormSelect label="select company" name="company" options={comapnies} />
+      <FormSelect
+        label="select company"
+        name="company"
+        options={comapnies}
+        defaultValue={company as string}
+      />
 
       <FormSelect
         label="sort by"
         name="order"
         options={["a-z", "z-a", "high", "low"]}
+        defaultValue={order as string}
       />
 
-      <FormRange label="select price" name="price" />
+      <FormRange label="select price" name="price" price={Number(price)} />
 
-      <FormCheckbox label="free shipping" name="shipping" />
+      <FormCheckbox
+        label="free shipping"
+        name="shipping"
+        defaultValue={shipping === "on"}
+      />
 
-      <button type="submit" className="btn btn-primary btn-sm">
+      <button type="submit" className="btn btn-primary btn-sm uppercase">
         search
       </button>
-      <Link to="/products" className="btn btn-accent btn-sm">
+      <Link to="/products" className="btn btn-accent btn-sm uppercase">
         reset
       </Link>
     </Form>
