@@ -10,7 +10,6 @@ const Filters = () => {
     meta: IProductsMetaData;
     params: { [key: string]: string };
   };
-  console.log(params);
   const { search, company, category, shipping, order, price } = params;
 
   const comapnies = meta.companies;

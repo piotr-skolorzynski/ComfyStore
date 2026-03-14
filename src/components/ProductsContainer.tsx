@@ -14,7 +14,6 @@ type LayoutStyle = (typeof LayoutStyle)[keyof typeof LayoutStyle];
 
 const ProductsContainer = () => {
   const { meta } = useLoaderData() as { meta: IProductsMetaData };
-  console.log(meta);
 
   const totalProducts = meta.pagination.total;
 
