@@ -32,7 +32,6 @@ const cartSlice = createSlice({
       action: PayloadAction<{ product: ICartProduct }>,
     ) => {
       const { product } = action.payload;
-      console.log(product);
 
       const item = state.cartItems.find(
         (item) => item.cartID === product.cartID,

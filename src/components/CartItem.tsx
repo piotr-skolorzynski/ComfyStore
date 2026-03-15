@@ -1,6 +1,7 @@
+import { useDispatch } from "react-redux";
 import type { ICartProduct } from "../models";
 import { formatPrice } from "../utils";
-import FormSelect from "./FormSelect";
+import { editItem, removeItem } from "../features/cart/cartSlice";
 
 interface ICartItemProps {
   cartItem: ICartProduct;
@@ -9,6 +10,13 @@ interface ICartItemProps {
 const CartItem = ({ cartItem }: ICartItemProps) => {
   const { cartID, title, price, image, amount, company, productColor } =
     cartItem;
+
+  const dispatch = useDispatch();
+
+  const removeItemFromTheCart = () => dispatch(removeItem({ cartID }));
+
+  const handleAmount = (e: React.ChangeEvent<HTMLSelectElement>) =>
+    dispatch(editItem({ cartID, amount: Number(e.target.value) }));
 
   const generateAmountOptions = (optionsAmount: number): string[] =>
     Array.from({ length: optionsAmount }, (_, index) => String(index + 1));
@@ -35,16 +43,29 @@ const CartItem = ({ cartItem }: ICartItemProps) => {
           ></span>
         </p>
       </div>
-      <div className="sm:ml-24">
+      <div className="sm:ml-12">
         <div className="max-w-xs">
-          <FormSelect
-            label="amount"
-            name="amount"
-            options={generateAmountOptions(amount + 5)}
-            defaultValue={String(amount)}
-          />
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend capitalize">amount</legend>
+            <select
+              name="amount"
+              id="amount"
+              value={amount}
+              className={`select select-bordered select-sm`}
+              onChange={handleAmount}
+            >
+              {generateAmountOptions(amount + 5).map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </fieldset>
         </div>
-        <button className="mt-2 link link-primary link-hover text-sm">
+        <button
+          className="mt-2 link link-primary link-hover text-sm"
+          onClick={removeItemFromTheCart}
+        >
           remove
         </button>
       </div>
