@@ -24,9 +24,10 @@ const SingleProduct = () => {
     productID: product.id,
     image,
     title,
-    price,
+    price: Number(price),
     company,
     productColor,
+    amount,
   };
 
   const dispatch = useDispatch();

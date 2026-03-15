@@ -1,18 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-
-interface ICartItem {
-  item: string;
-}
-
-interface ICartState {
-  cartItems: ICartItem[];
-  numItemsInCart: number;
-  cartTotal: number;
-  shipping: number;
-  tax: number;
-  orderTotal: number;
-}
+import type { ICartProduct, ICartState } from "../../models";
 
 const defaultState = {
   cartItems: [],
@@ -23,17 +11,47 @@ const defaultState = {
   orderTotal: 0,
 } as ICartState;
 
+const TAX = 0.1;
+
+const getCartFromLocalStorage = (): ICartState => {
+  const state = localStorage.getItem("cart");
+
+  if (state) {
+    return JSON.parse(state);
+  } else {
+    return defaultState;
+  }
+};
+
 const cartSlice = createSlice({
   name: "cart",
-  initialState: defaultState,
+  initialState: getCartFromLocalStorage(),
   reducers: {
     addItem: (state, action) => {
-      console.log(action.payload);
+      const { product } = action.payload as { product: ICartProduct };
+      const item = state.cartItems.find(
+        (item) => item.cartID === product.cartID,
+      );
+
+      if (item) {
+        item.amount += product.amount;
+      } else {
+        state.cartItems.push(product);
+      }
+
+      state.numItemsInCart += product.amount;
+      state.cartTotal += product.price * product.amount;
+      cartSlice.caseReducers.calculateTotals(state);
+      toast.success("Item added to cart");
     },
     clearCart: (state) => {},
-
     removeItem: (state, action) => {},
     editItem: (state, action) => {},
+    calculateTotals: (state) => {
+      state.tax = TAX * state.cartTotal;
+      state.orderTotal = state.cartTotal + state.shipping + state.tax;
+      localStorage.setItem("cart", JSON.stringify(state));
+    },
   },
 });
 

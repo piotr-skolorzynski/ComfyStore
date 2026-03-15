@@ -3,7 +3,8 @@ export interface ICartProduct {
   productID: number;
   image: string;
   title: string;
-  price: string;
+  price: number;
   company: string;
   productColor: string;
+  amount: number;
 }

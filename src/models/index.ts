@@ -1,4 +1,5 @@
 export type { ICartProduct } from "./cart-product.interface";
+export type { ICartState } from "./cart-state.interface";
 export type { FormCheckboxSize } from "./form-checkbox-size.model";
 export type { FormInputSize } from "./form-input-size.model";
 export type { FormRangeSize } from "./form-range-size.model";
