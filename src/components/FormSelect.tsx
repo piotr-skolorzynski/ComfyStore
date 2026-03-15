@@ -29,7 +29,6 @@ const FormSelect = ({
           </option>
         ))}
       </select>
-      <span className="label">Optional</span>
     </fieldset>
   );
 };

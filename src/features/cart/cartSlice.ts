@@ -27,8 +27,13 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: getCartFromLocalStorage(),
   reducers: {
-    addItem: (state: ICartState, action: PayloadAction<ICartProduct>) => {
-      const product = action.payload;
+    addItem: (
+      state: ICartState,
+      action: PayloadAction<{ product: ICartProduct }>,
+    ) => {
+      const { product } = action.payload;
+      console.log(product);
+
       const item = state.cartItems.find(
         (item) => item.cartID === product.cartID,
       );
