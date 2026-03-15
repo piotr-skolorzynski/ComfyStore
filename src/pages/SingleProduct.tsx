@@ -1,7 +1,9 @@
 import { Link, useLoaderData } from "react-router";
-import type { IProduct } from "../models";
+import type { ICartProduct, IProduct } from "../models";
 import { formatPrice } from "../utils";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../features/cart/cartSlice";
 
 const SingleProduct = () => {
   const numOptions = 20;
@@ -15,6 +17,22 @@ const SingleProduct = () => {
 
   const handleAmount = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setAmount(Number(e.target.value));
+  };
+
+  const cartProduct: ICartProduct = {
+    cartID: product.id + productColor,
+    productID: product.id,
+    image,
+    title,
+    price,
+    company,
+    productColor,
+  };
+
+  const dispatch = useDispatch();
+
+  const addToCart = () => {
+    dispatch(addItem({ product: cartProduct }));
   };
 
   return (
@@ -88,7 +106,7 @@ const SingleProduct = () => {
             <div className="mt-10">
               <button
                 className="btn btn-secondary btn-md uppercase"
-                onClick={() => console.log("add to bag")}
+                onClick={addToCart}
               >
                 add to bag
               </button>
