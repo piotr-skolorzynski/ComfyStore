@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import type { ICartProduct, ICartState } from "../../models";
 
@@ -27,8 +27,8 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: getCartFromLocalStorage(),
   reducers: {
-    addItem: (state, action) => {
-      const { product } = action.payload as { product: ICartProduct };
+    addItem: (state: ICartState, action: PayloadAction<ICartProduct>) => {
+      const product = action.payload;
       const item = state.cartItems.find(
         (item) => item.cartID === product.cartID,
       );
@@ -44,12 +44,15 @@ const cartSlice = createSlice({
       cartSlice.caseReducers.calculateTotals(state);
       toast.success("Item added to cart");
     },
-    clearCart: () => {
+    clearCart: (): ICartState => {
       localStorage.setItem("cart", JSON.stringify(defaultState));
       return defaultState;
     },
-    removeItem: (state, action) => {
-      const { cartID } = action.payload as Partial<ICartProduct>;
+    removeItem: (
+      state: ICartState,
+      action: PayloadAction<Partial<ICartProduct>>,
+    ) => {
+      const { cartID } = action.payload;
       const product = state.cartItems.find((item) => item.cartID === cartID);
       state.cartItems = state.cartItems.filter(
         (item) => item.cartID !== cartID,
@@ -61,8 +64,11 @@ const cartSlice = createSlice({
         toast.error("Item removed from cart");
       }
     },
-    editItem: (state, action) => {
-      const { cartID, amount } = action.payload as Partial<ICartProduct>;
+    editItem: (
+      state: ICartState,
+      action: PayloadAction<Partial<ICartProduct>>,
+    ) => {
+      const { cartID, amount } = action.payload;
       const item = state.cartItems.find((item) => item.cartID === cartID);
 
       if (amount && item) {
@@ -73,7 +79,7 @@ const cartSlice = createSlice({
         toast.success("Cart updated");
       }
     },
-    calculateTotals: (state) => {
+    calculateTotals: (state: ICartState) => {
       state.tax = TAX * state.cartTotal;
       state.orderTotal = state.cartTotal + state.shipping + state.tax;
       localStorage.setItem("cart", JSON.stringify(state));

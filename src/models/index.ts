@@ -1,12 +1,13 @@
-export type { ICartProduct } from "./cart-product.interface";
-export type { ICartState } from "./cart-state.interface";
 export type { FormCheckboxSize } from "./form-checkbox-size.model";
 export type { FormInputSize } from "./form-input-size.model";
 export type { FormRangeSize } from "./form-range-size.model";
 export type { FormSelectSize } from "./form-select-size.model";
+export type { ICartProduct } from "./cart-product.interface";
+export type { ICartState } from "./cart-state.interface";
 export type { IPagination } from "./pagination.interface";
 export type { IProduct } from "./product.interface";
 export type { IProductAttributes } from "./product-attributes.interface";
 export type { IProductsMetaData } from "./products-metadata.interface";
 export type { IRouteLink } from "./route-link.interface";
+export type { IState } from "./state.interface";
 export type { LoadingSize } from "./loading-size.model";
