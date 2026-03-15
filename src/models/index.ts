@@ -10,4 +10,6 @@ export type { IProductAttributes } from "./product-attributes.interface";
 export type { IProductsMetaData } from "./products-metadata.interface";
 export type { IRouteLink } from "./route-link.interface";
 export type { IState } from "./state.interface";
+export type { IUser } from "./user.interface";
+export type { IUserState } from "./user-state.interface";
 export type { LoadingSize } from "./loading-size.model";
