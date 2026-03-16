@@ -1,7 +1,7 @@
-import { useDispatch } from "react-redux";
 import type { ICartProduct } from "../models";
 import { formatPrice } from "../utils";
 import { editItem, removeItem } from "../features/cart/cartSlice";
+import { useAppDispatch } from "../store/store-hooks";
 
 interface ICartItemProps {
   cartItem: ICartProduct;
@@ -11,7 +11,7 @@ const CartItem = ({ cartItem }: ICartItemProps) => {
   const { cartID, title, price, image, amount, company, productColor } =
     cartItem;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const removeItemFromTheCart = () => dispatch(removeItem({ cartID }));
 

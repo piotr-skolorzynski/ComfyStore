@@ -2,8 +2,8 @@ import { Link, useLoaderData } from "react-router";
 import type { ICartProduct, IProduct } from "../models";
 import { formatPrice } from "../utils";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { addItem } from "../features/cart/cartSlice";
+import { useAppDispatch } from "../store/store-hooks";
 
 const SingleProduct = () => {
   const numOptions = 20;
@@ -30,7 +30,7 @@ const SingleProduct = () => {
     amount,
   };
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const addToCart = () => {
     dispatch(addItem({ product: cartProduct }));
