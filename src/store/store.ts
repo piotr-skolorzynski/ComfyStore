@@ -5,7 +5,7 @@ import userReducer from "../features/user/userSlice.ts";
 export const store = configureStore({
   reducer: {
     cartState: cartReducer,
-    userSate: userReducer,
+    userState: userReducer,
   },
 });
 

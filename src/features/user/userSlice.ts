@@ -1,5 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { IUserState } from "../../models";
+import { toast } from "react-toastify";
 
 const themes = {
   winter: "winter",
@@ -26,11 +27,11 @@ const userSlice = createSlice({
       console.log("login");
     },
     logoutUser: (state: IUserState) => {
-      console.log("logout");
+      state.user = null;
+      localStorage.removeItem("user");
+      toast.success("Logged out successfully");
     },
     toggleTheme: (state: IUserState) => {
-      console.log("state: ", state);
-
       const { dracula, winter } = themes;
       state.theme = state.theme === winter ? dracula : winter;
       document.documentElement.setAttribute("data-theme", state.theme);

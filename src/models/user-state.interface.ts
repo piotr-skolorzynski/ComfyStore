@@ -1,6 +1,6 @@
 import type { IUser } from "./user.interface";
 
 export interface IUserState {
-  user: IUser;
+  user: IUser | null;
   theme: string;
 }

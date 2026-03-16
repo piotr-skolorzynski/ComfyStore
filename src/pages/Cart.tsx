@@ -2,10 +2,10 @@ import { useSelector } from "react-redux";
 import type { ICartState } from "../models";
 import { CartItemsList, CartTotals, SectionTitle } from "../components";
 import { Link } from "react-router";
+import { useAppSelector } from "../store/store-hooks";
 
 const Cart = () => {
-  //temp
-  const user = null;
+  const user = useAppSelector((state) => state.userState.user);
   const numItemsInCart = useSelector(
     ({ cartState }: { cartState: ICartState }) => cartState.numItemsInCart,
   );
