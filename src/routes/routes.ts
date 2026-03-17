@@ -21,6 +21,7 @@ import {
 } from "../loaders";
 
 //actions
+import { registerUserAction } from "../actions";
 
 export const routes = [
   {
@@ -73,5 +74,6 @@ export const routes = [
     path: "/register",
     Component: Register,
     ErrorBoundary: Error,
+    action: registerUserAction,
   },
 ] as RouteObject[];
