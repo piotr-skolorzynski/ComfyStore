@@ -14,6 +14,7 @@ import {
 } from "../pages";
 import { ErrorElement } from "../components";
 import {
+  checkUserAccessLoader,
   featuredProductsLoader,
   productsLoader,
   singleProductLoader,
@@ -56,6 +57,7 @@ export const routes = [
       {
         path: "checkout",
         Component: Checkout,
+        loader: checkUserAccessLoader(store),
       },
       {
         path: "orders",
