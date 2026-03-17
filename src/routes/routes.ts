@@ -13,15 +13,13 @@ import {
   SingleProduct,
 } from "../pages";
 import { ErrorElement } from "../components";
-// loaders
 import {
   featuredProductsLoader,
   productsLoader,
   singleProductLoader,
 } from "../loaders";
-
-//actions
-import { registerUserAction } from "../actions";
+import { loginUserAction, registerUserAction } from "../actions";
+import { store } from "../store/store";
 
 export const routes = [
   {
@@ -69,6 +67,7 @@ export const routes = [
     path: "/login",
     Component: Login,
     ErrorBoundary: Error,
+    action: loginUserAction(store),
   },
   {
     path: "/register",

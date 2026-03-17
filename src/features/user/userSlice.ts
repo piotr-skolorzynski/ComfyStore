@@ -1,11 +1,13 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { IUserState } from "../../models";
+import type { ILoginUserResponse, IStoreUser, IUserState } from "../../models";
 import { toast } from "react-toastify";
+
+type ThemeConfig = Record<string, string>;
 
 const themes = {
   winter: "winter",
   dracula: "dracula",
-};
+} as const satisfies ThemeConfig;
 
 const getThemeFromLocalStorage = () => {
   const theme = localStorage.getItem("theme") || themes.winter;
@@ -14,8 +16,18 @@ const getThemeFromLocalStorage = () => {
   return theme;
 };
 
+const getUserFromLocalStorage = () => {
+  const user = localStorage.getItem("user");
+
+  if (user) {
+    return JSON.parse(user);
+  } else {
+    return null;
+  }
+};
+
 const initialState = {
-  user: { username: "Skolo" },
+  user: getUserFromLocalStorage(),
   theme: getThemeFromLocalStorage(),
 } as IUserState;
 
@@ -23,8 +35,16 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    loginUser: (state: IUserState, action: PayloadAction) => {
-      console.log("login");
+    loginUser: (
+      state: IUserState,
+      action: PayloadAction<ILoginUserResponse>,
+    ) => {
+      const user: IStoreUser = {
+        ...action.payload.user,
+        token: action.payload.jwt,
+      };
+      state.user = user;
+      localStorage.setItem("user", JSON.stringify(user));
     },
     logoutUser: (state: IUserState) => {
       state.user = null;

@@ -13,7 +13,6 @@ export const registerUserAction: ActionFunction = async ({
 }: ActionFunctionArgs) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData) as IRegisterUser;
-  console.log(data);
 
   try {
     await customFetch.post("auth/local/register", data);
