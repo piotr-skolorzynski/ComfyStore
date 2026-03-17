@@ -1,7 +1,29 @@
-import { Form, Link } from "react-router";
+import { Form, Link, useNavigate } from "react-router";
 import { FormInput, SubmitBtn } from "../components";
+import { useAppDispatch } from "../store/store-hooks";
+import { customFetch } from "../utils";
+import { loginUser } from "../features/user/userSlice";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const loginAsGuestUser = async () => {
+    try {
+      const response = await customFetch.post("auth/local", {
+        identifier: "test@test.com",
+        password: "secret",
+      });
+      dispatch(loginUser(response.data));
+      toast.success("welcome guest user");
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      toast.error("guest user login error. please try again");
+    }
+  };
+
   return (
     <section className="grid place-items-center h-screen">
       <Form
@@ -10,24 +32,18 @@ const Login = () => {
       >
         <h4 className="text-center text-3xl font-bold">Login</h4>
 
-        <FormInput
-          type="email"
-          label="email"
-          name="identifier"
-          defaultValue="test@test.com"
-        />
+        <FormInput type="email" label="email" name="identifier" />
 
-        <FormInput
-          type="password"
-          label="password"
-          name="password"
-          defaultValue="secret"
-        />
+        <FormInput type="password" label="password" name="password" />
 
         <div className="mt-4">
           <SubmitBtn text="login" />
 
-          <button type="button" className="btn btn-secondary btn-block my-3">
+          <button
+            type="button"
+            className="btn btn-secondary btn-block my-3"
+            onClick={loginAsGuestUser}
+          >
             guest user
           </button>
 
