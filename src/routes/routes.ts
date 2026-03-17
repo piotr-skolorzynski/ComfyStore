@@ -19,7 +19,11 @@ import {
   productsLoader,
   singleProductLoader,
 } from "../loaders";
-import { loginUserAction, registerUserAction } from "../actions";
+import {
+  loginUserAction,
+  registerUserAction,
+  checkoutAction,
+} from "../actions";
 import { store } from "../store/store";
 
 export const routes = [
@@ -58,6 +62,7 @@ export const routes = [
         path: "checkout",
         Component: Checkout,
         loader: checkUserAccessLoader(store),
+        action: checkoutAction(store),
       },
       {
         path: "orders",

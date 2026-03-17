@@ -6,6 +6,8 @@ export type { ICartProduct } from "./cart-product.interface";
 export type { ICartState } from "./cart-state.interface";
 export type { ILoginUser } from "./login-user.interface";
 export type { ILoginUserResponse } from "./login-user-response.interface";
+export type { IOrder } from "./order.interface";
+export type { IOrderCartItem } from "./order-cart-item.interface";
 export type { IPagination } from "./pagination.interface";
 export type { IProduct } from "./product.interface";
 export type { IProductAttributes } from "./product-attributes.interface";
