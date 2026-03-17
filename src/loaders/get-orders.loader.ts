@@ -5,8 +5,8 @@ import { toast } from "react-toastify";
 import { customFetch } from "../utils";
 import { isAxiosError } from "axios";
 import type {
-  IProduct,
-  IProductsMetaData,
+  IOrdersResponse,
+  IOrdersResponseMeta,
   StrapiErrorResponse,
 } from "../models";
 
@@ -32,11 +32,9 @@ export const getOrdersLoader =
         },
       });
 
-      console.log(response.data);
-
       return { orders: response.data.data, meta: response.data.meta } as {
-        orders: IProduct[];
-        meta: IProductsMetaData;
+        orders: IOrdersResponse[];
+        meta: IOrdersResponseMeta;
       };
     } catch (error) {
       let errorMessage = "there was an error fetching your orders";
