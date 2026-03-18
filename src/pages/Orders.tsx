@@ -1,6 +1,10 @@
 import { useLoaderData } from "react-router";
 import type { IProductsMetaData } from "../models";
-import { OrdersList, PaginationContainer, SectionTitle } from "../components";
+import {
+  ComplexPaginationContainer,
+  OrdersList,
+  SectionTitle,
+} from "../components";
 
 const Orders = () => {
   const { meta } = useLoaderData() as { meta: IProductsMetaData };
@@ -13,7 +17,7 @@ const Orders = () => {
     <>
       <SectionTitle text="Your orders" />
       <OrdersList />
-      <PaginationContainer />
+      <ComplexPaginationContainer />
     </>
   );
 };
